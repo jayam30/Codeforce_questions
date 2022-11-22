@@ -1,0 +1,1793 @@
+ ECE 
+Assignment 1 
+Q1) Write a C++ program that inputs a character from keyboard and 
+display its corresponding ASCII value on the screen.
+Ans: 
+#include <iostream>
+using namespace std; 
+int main() { 
+char c; 
+cout << "Enter a character: "; 
+cin >> c; 
+cout << "ASCII Value of " << c << " is " << int(c); 
+return 0; 
+}
+Output
+Enter a character: p 
+ASCII Value of p is 112 
+Q2) Write a C++ program using class called temperature and 
+member functions for a temperature in Fahrenheit and display it in 
+Celsius.
+Ans: 
+#include<iostream>
+using namespace std; 
+// define a class Temperature
+class Temperature
+{ 
+ private:
+ float fahren, celsius; 
+ public:
+ float conversion(float f) 
+ { 
+ fahren=f; 
+ celsius=(fahren-32)* 5.0/9.0; 
+ return celsius; 
+ } 
+ 
+}; 
+int main() 
+{ 
+ // define an object of Temperature class
+ Temperature t; 
+ float f; 
+ cout<<"Enter Temperature in Fahrenheit="; 
+ cin>>f; 
+ // call conversion function with object t
+ cout<<"Temperature in Celsius="<<t.conversion(f); 
+return 0; 
+} 
+Output
+Enter Temperature in Fahrenheit=32 
+Temperature in Celsius=0 
+Q3) Write a C++ program function using reference variables as 
+arguments to swap the values of a pair of integers.
+Ans: 
+#include<iostream> 
+ using namespace std; 
+ void swap(int &x, int &y) 
+ { 
+ int temp; 
+ temp = x; 
+ x = y; 
+ y = temp; 
+ } 
+ int main() 
+ { 
+ int a, b; 
+ cout<<"Enter the value of a: "; 
+ cin>>a; 
+ cout<<"Enter the value of b: "; 
+ cin>>b; 
+ cout<<endl<<"Before swapping: "; 
+ cout<<"a= "<<a<<" and b= "<<b; 
+ swap(a, b); 
+ cout<<endl<<"After swapping: "; 
+ cout<<"a= "<<a<<" and b= "<<b;
+ } 
+Output 
+Enter the value of a: 10 
+Enter the value of b: 20 
+Before swapping: a= 10 and b= 20 
+After swapping: a= 20 and b= 10 
+Q4) Write a C++ program which explains and show different storage 
+classes auto, extern static and register.
+Ans: auto 
+#include <iostream>
+using namespace std;
+ 
+void autoStorageClass()
+{
+ 
+ cout << "Demonstrating auto class\n";
+ 
+ // Declaring an auto variable
+ // No data-type declaration needed
+ auto a = 32;
+ auto b = 3.2;
+ auto c = "GeeksforGeeks";
+ auto d = 'G';
+ 
+ // printing the auto variables
+ cout << a << " \n";
+ cout << b << " \n";
+ cout << c << " \n";
+ cout << d << " \n";
+}
+ 
+int main()
+{
+ 
+ // To demonstrate auto Storage Class
+ autoStorageClass();
+ 
+ return 0;
+}
+Output 
+Demonstrating auto class 
+32 
+3.2 
+GeeksforGeeks 
+G 
+Extern 
+#include <iostream>
+using namespace std;
+ 
+// declaring the variable which is to
+// be made extern an initial value can
+// also be initialized to x
+int x;
+void externStorageClass()
+{
+ 
+ cout << "Demonstrating extern class\n";
+ 
+ // telling the compiler that the variable
+ // x is an extern variable and has been
+ // defined elsewhere (above the main
+ // function)
+ extern int x;
+ 
+ // printing the extern variables 'x'
+ cout << "Value of the variable 'x'"
+ << "declared, as extern: " << x << "\n";
+ 
+ // value of extern variable x modified
+ x = 2;
+ 
+ // printing the modified values of
+ // extern variables 'x'
+ cout
+ << "Modified value of the variable 'x'"
+ << " declared as extern: \n"
+ << x;
+}
+ 
+int main()
+{
+ 
+ // To demonstrate extern Storage Class
+ externStorageClass();
+ 
+ return 0;
+}
+Output 
+Demonstrating extern class 
+Value of the variable 'x'declared, as extern: 0 
+Modified value of the variable 'x' declared as extern: 
+2 
+Static 
+#include <iostream>
+using namespace std;
+ 
+// Function containing static variables
+// memory is retained during execution
+int staticFun()
+{
+ cout << "For static variables: ";
+ static int count = 0;
+ count++;
+ return count;
+}
+ 
+// Function containing non-static variables
+// memory is destroyed
+int nonStaticFun()
+{
+ cout << "For Non-Static variables: ";
+ 
+ int count = 0;
+ count++;
+ return count;
+}
+ 
+int main()
+{
+ 
+ // Calling the static parts
+ cout << staticFun() << "\n";
+ cout << staticFun() << "\n";
+ ;
+ 
+ // Calling the non-static parts
+ 
+ cout << nonStaticFun() << "\n";
+ ;
+ cout << nonStaticFun() << "\n";
+ ;
+ return 0;
+}
+Output 
+For static variables: 1 
+For static variables: 2 
+For Non-Static variables: 1 
+For Non-Static variables: 1 
+Register 
+#include <iostream>
+using namespace std;
+ 
+void registerStorageClass()
+{
+ 
+ cout << "Demonstrating register class\n";
+ 
+ // declaring a register variable
+ register char b = 'G';
+ 
+ // printing the register variable 'b'
+ cout << "Value of the variable 'b'"
+ << " declared as register: " << b;
+}
+int main()
+{
+ 
+ // To demonstrate register Storage Class
+ registerStorageClass();
+ return 0;
+}
+Output 
+Demonstrating register class 
+Value of the variable 'b' declared as register: G 
+Assignment 2 
+Q1) Write a C++ program to find factorial of number using function.
+Ans: 
+#include<iostream>
+#include<conio.h>
+using namespace std; 
+//Function
+long factorial(int); 
+int main() { 
+ // Variable Declaration
+ int counter, n; 
+ // Get Input Value
+ cout << "Enter the Number :"; 
+ cin>>n; 
+ // Factorial Function Call
+ cout << n << " Factorial Value Is " << factorial(n); 
+ // Wait For Output Screen
+ getch(); 
+ return 0; 
+} 
+// Factorial Function
+long factorial(int n) { 
+ int counter; 
+ long fact = 1; 
+ //for Loop Block
+ for (int counter = 1; counter <= n; counter++) { 
+ fact = fact * counter; 
+ } 
+ return fact; 
+}
+Output
+Enter the Number :6 
+6 Factorial Value Is 720
+Q2) Write a C++ program to check number is palindrome or not 
+using Function.
+Ans: 
+#include<iostream> 
+using namespace std; 
+void rev(int); 
+int main() 
+{ 
+ int n; 
+ cout<<"Enter any number :: "; 
+ cin>>n; 
+ rev(n); 
+} 
+void rev(int n) 
+{ 
+ int n1,d,rn=0; 
+ n1=n; 
+ while(n>0) 
+ { 
+ d=n%10; 
+ rn=(rn*10)+d; 
+ n/=10; 
+ } 
+ if(n1==rn) 
+ cout<<"\nThe Number [ "<<n1<<" ] is a Palindrome no.\n"; 
+ else 
+ cout<<"\nThe Number [ "<<n1<<" ] is NOT a Palindrome no.\n"; 
+} 
+Output
+Enter any number :: 123321 
+The Number [ 123321 ] is a Palindrome no. 
+Process returned 0 
+Q3) Write a C++ Program to find Cube of a Number using function.
+Ans: 
+#include<iostream> 
+using namespace std; 
+int main() 
+{ 
+ 
+ float cube(float); //Function Type is float 
+ float num,cu; 
+ 
+ cout<<"Enter Any Number To Find Cube :\t"; 
+ cin>>num; 
+ 
+ cu=cube(num); 
+ cout<<"Cube Of "<<num<<" is = "<<cu<<endl<<endl; 
+ return 0; 
+} 
+float cube(float a) 
+{ 
+ float cu; 
+ cu=a*a*a; 
+ return(cu); 
+} 
+Output
+Enter Any Number To Find Cube : 9 
+Cube Of 9 is = 729
+Q4) Write a C++ Program to Swap two numbers and characters using 
+call by value.
+Ans: 
+#include<iostream> 
+using namespace std; 
+void swap(int,int); 
+void swapc(char,char); 
+int main() 
+{ 
+ char x,y; 
+ int a,b; 
+ cout<<"\nEnter 1st character :: "; 
+ cin>>x; 
+ cout<<"\nEnter 2nd character :: "; 
+ cin>>y; 
+ cout<<"\nEnter 1st integer :: "; 
+ cin>>a; 
+ cout<<"\nEnter 2nd integer :: "; 
+ cin>>b; 
+ cout<<"\nBefore Swapping, Value of Characters :: \n\tx = "<<x<<"\ty = "<<y<<"\n"; 
+ cout<<"\nBefore Swapping, Value of Integers :: \n\tA = "<<a<<"\tB = "<<b<<"\n"; 
+ swap(a,b); 
+ swapc(x,y); 
+ cout<<"\nOutside Function After Swapping, Value of Characters :: \n\tx = "<<x<<"\ty = 
+"<<y<<"\n"; 
+ cout<<"\nOutside Function After Swapping, Value of Integers :: \n\tA = "<<a<<"\tB = 
+"<<b<<"\n"; 
+} 
+void swap(int a,int b) 
+{ 
+ int c; 
+ c=a; 
+ a=b; 
+ b=c; 
+ cout<<"\nInside Function After Swapping, Value of Integers :: \n\tA = "<<a<<"\tB = 
+"<<b<<"\n"; 
+} 
+void swapc(char x,char y) 
+{ 
+ char z; 
+ z=x; 
+ x=y; 
+ y=z; 
+ cout<<"\nInside Function After Swapping, Value of Characters :: \n\tx = "<<x<<"\ty 
+= "<<y<<"\n"; 
+} 
+Output
+Enter 1st character :: C 
+Enter 2nd character :: D 
+Enter 1st integer :: 1 
+Enter 2nd integer :: 2 
+Before Swapping, Value of Characters :: 
+ x = C y = D 
+Before Swapping, Value of Integers :: 
+ A = 1 B = 2 
+Inside Function After Swapping, Value of Integers :: 
+ A = 2 B = 1 
+Inside Function After Swapping, Value of Characters :: 
+ x = D y = C 
+Outside Function After Swapping, Value of Characters :: 
+ x = C y = D 
+Outside Function After Swapping, Value of Integers :: 
+ A = 1 B = 2 
+Assignment 3 
+Q1) Write a C++ program to print the following output using for 
+loops. 
+1 
+2 2 
+3 3 3 
+4 4 4 4 
+5 5 5 5 5
+Ans: 
+#include <iostream> 
+using namespace std; 
+int main() 
+{ 
+ int i, j; 
+ for (i = 1; i <= 5; i++) 
+ { 
+ for (j = 1; j <= i; j++) 
+ { 
+ cout << i<<" "; 
+ } 
+ cout << "\n"; 
+ } 
+ return 0; 
+} 
+Output
+Q2) Write a program in C++ to input a single digit number and print a rectangular form of 
+4 columns and 6 rows. 
+5 5 5 5 
+5 5 
+5 5 
+5 5 
+5 5 
+5 5 5 5
+Ans: 
+#include <iostream> 
+using namespace std; 
+ int main() 
+ { 
+ int x; 
+ cout << "\n\n Make a rectangular form of 4 columns and 6 rows 
+:\n"; 
+ cout << "--------------------------------------------\n"; 
+ cout<<" Input the number : "; 
+ cin>> x; 
+ cout<<" "<<x<<x<<x<<x<<endl; 
+ cout<<" "<<x<<" "<<" "<<x<<endl; 
+ cout<<" "<<x<<" "<<" "<<x<<endl; 
+ cout<<" "<<x<<" "<<" "<<x<<endl; 
+ cout<<" "<<x<<" "<<" "<<x<<endl; 
+ cout<<" "<<x<<x<<x<<x<<endl; 
+ cout << endl; 
+ return 0; 
+ } 
+Output
+Q3) Write a C++ program to display the current date and time. 
+Ans: 
+#include<iostream> 
+#include<ctime> 
+using namespace std; 
+int main() 
+{ 
+ time_t timetoday; 
+ time (&timetoday); 
+ cout << "Calendar date and time as per todays is : "<< 
+asctime(localtime(&timetoday)); 
+ return 0; 
+} 
+Output 
+Q4) Write a program in C++ to enter P, T, R and calculate Simple 
+Interest. 
+Ans: 
+#include <iostream> 
+using namespace std; 
+int main() 
+{ 
+ float P, N, R, SI; 
+ cout << "Enter the Principal amount :"; 
+ cin >> P; 
+ cout << "Enter the number of years :"; 
+ cin >> N; 
+ cout << "Enter the rate of interest :"; 
+ cin >> R; 
+ SI = P * N * R / 100; 
+ cout << "Simple interest is " << SI; 
+ return 0; 
+} 
+Output
+Assignment 4 
+Q1) Write a C++ program for unary minus (-) operator overloading. 
+Ans: 
+#include<iostream> 
+using namespace std; 
+ 
+class NUM 
+{ 
+ private: 
+ int n; 
+ 
+ public: 
+ //function to get number 
+ void getNum(int x) 
+ { 
+ n=x; 
+ } 
+ //function to display number 
+ void dispNum(void) 
+ { 
+ cout << "value of n is: " << n; 
+ } 
+ //unary - operator overloading 
+ void operator - (void) 
+ { 
+ n=-n; 
+ } 
+}; 
+int main() 
+{ 
+ NUM num; 
+ num.getNum(10); 
+ -num; 
+ num.dispNum(); 
+ cout << endl; 
+ return 0; 
+ 
+} 
+Output
+value of n is: -10 
+Q2) Write a C++ program for unary increment (++) and decrement (-
+-) operator overloading. 
+Ans: 
+#include <iostream>
+using namespace std; 
+class NUM { 
+private:
+ int n; 
+public:
+ // function to get number
+ void getNum(int x) 
+ { 
+ n = x; 
+ } 
+ // function to display number
+ void dispNum(void) 
+ { 
+ cout << "value of n is: " << n; 
+ } 
+ // unary ++ operator overloading
+ void operator++(void) 
+ { 
+ n = ++n; 
+ } 
+ // unary -- operator overloading
+ void operator--(void) 
+ { 
+ n = --n; 
+ } 
+}; 
+int main() 
+{ 
+ NUM num; 
+ num.getNum(10); 
+ ++num; 
+ cout << "After increment - "; 
+ num.dispNum(); 
+ cout << endl; 
+ --num; 
+ cout << "After decrement - "; 
+ num.dispNum(); 
+ cout << endl; 
+ return 0; 
+} 
+Output
+ After increment - value of n is: 11 
+ After decrement - value of n is: 10 
+Q3) Write a C++ program for unary logical NOT (!) operator 
+overloading. 
+Ans: 
+#include <iostream>
+using namespace std; 
+class NUM { 
+private:
+ int n; 
+public:
+ // function to get number
+ void getNum(int x) 
+ { 
+ n = x; 
+ } 
+ // function to display number
+ void dispNum(void) 
+ { 
+ cout << "value of n is: " << n; 
+ } 
+ // unary ! operator overloading
+ void operator!(void) 
+ { 
+ n = !n; 
+ } 
+}; 
+int main() 
+{ 
+ NUM num; 
+ num.getNum(10); 
+ cout << "Before calling Operator Overloading:"; 
+ num.dispNum(); 
+ cout << endl; 
+ !num; 
+ cout << "After calling Operator Overloading:"; 
+ num.dispNum(); 
+ cout << endl; 
+ return 0; 
+} 
+Output
+ Before calling Operator Overloading:value of n is: 10 
+ After calling Operator Overloading:value of n is: 0 
+Assignment 5 
+Q1) Write a C++ Program to Display Date using Constructors 
+Ans: 
+#include<iostream> 
+using namespace std; 
+class date 
+{ 
+ private: 
+ int dd, mm, yy; 
+ public: 
+ date() 
+ { 
+ dd=31; 
+ mm=12; 
+ yy=2016; 
+ cout<<"\nDate Object has been created..............\n"; 
+ } 
+ void display() 
+ { 
+ cout<<"\nThe Entered Date is :: "; 
+ cout<<dd<<"-"<<mm<<"-"<<yy<<"\n"; 
+ } 
+}; 
+int main () 
+{ 
+date date1; 
+date1.display (); 
+return 0; 
+} 
+Output
+Date Object has been created.............. 
+The Entered Date is :: 31-12-2016 
+Q2) C++ program to Display Student Details using constructor and 
+destructor 
+Ans: 
+#include<iostream.h>
+#include<conio.h>
+class stu 
+{
+ private: char name[20],add[20];
+ int roll,zip;
+ public: stu ( );//Constructor
+ ~stu( );//Destructor
+ void read( );
+ void disp( ); 
+};
+stu :: stu( )
+{
+cout<<”This is Student Details”<<endl;
+}
+void stu :: read( )
+{
+cout<<”Enter the student Name”;
+cin>>name;
+cout<<”Enter the student roll no “;
+cin>>roll;
+cout<<”Enter the student address”;
+cin>>add;
+cout<<”Enter the Zipcode”;
+cin>>zip;
+}
+void stu :: disp( )
+{
+cout<<”Student Name :”<<name<<endl;
+cout<<”Roll no is :”<<roll<<endl;
+cout<<”Address is :”<<add<<endl;
+cout<<”Zipcode is :”<<zip;
+}
+stu : : ~stu( )
+{
+cout<<”Student Detail is Closed”;
+}
+ 
+void main( )
+{
+ stu s;
+ clrscr( );
+s.read ( );
+s.disp ( );
+getch( );
+}
+OUTPUT 
+Enter the student Name 
+James 
+Enter the student roll no 
+01 
+Enter the student address 
+Newyork 
+Enter the Zipcode 
+919108 
+Student Name : James 
+Roll no is : 01 
+Address is : Newyork 
+Zipcode is :919108 
+Q3) C++ Program for Constructor with Parameters (Parameterized 
+Constructor) 
+Ans: 
+#include <iostream>
+using namespace std;
+ 
+class Point {
+private:
+ int x, y;
+ 
+public:
+ // Parameterized Constructor
+ Point(int x1, int y1)
+ {
+ x = x1;
+ y = y1;
+ }
+ 
+ int getX() { return x; }
+ int getY() { return y; }
+};
+ 
+int main()
+{
+ // Constructor called
+ Point p1(10, 15);
+ 
+ // Access values assigned by constructor
+ cout << "p1.x = " << p1.getX()
+ << ", p1.y = " << p1.getY();
+ 
+ return 0;
+}
+Output
+p1.x = 10, p1.y = 15 
+Q4) C++ Program to calculate Volume of Box using Constructor. 
+Ans: 
+#include <iostream> 
+using namespace std; 
+class box 
+{ 
+ double length,width,height; 
+ double volume; 
+ public: 
+ box(double a,double b,double c); 
+ void vol(); 
+}; 
+box::box(double a,double b,double c) 
+{ 
+ length=a; 
+ width=b; 
+ height=c; 
+ volume=length*width*height; 
+} 
+void box::vol() 
+{ 
+ cout<<"\nDimensions of Box are :: \n"; 
+ cout<<"\nLength of Box :: "<<length<<"\n"; 
+ cout<<"\nWidth of Box :: "<<width<<"\n"; 
+ cout<<"\nHeight of Box :: "<<height<<"\n"; 
+ cout<<"\nVolume of Box :: "<<volume<<"\n"; 
+} 
+int main() 
+{ 
+ box x(2.4,5.7,2.1),y(3.3,4.4,5.5); 
+ x.vol(); 
+ y.vol(); 
+ return 0; 
+} 
+Output
+Dimensions of Box are :: 
+Length of Box :: 2.4 
+Width of Box :: 5.7 
+Height of Box :: 2.1 
+Volume of Box :: 28.728 
+Dimensions of Box are :: 
+Length of Box :: 3.3 
+Width of Box :: 4.4 
+Height of Box :: 5.5 
+Volume of Box :: 79.86 
+Assignment 6 
+Q1) Write a C++ program to read and print employee information 
+with department and pf information using hierarchical inheritance. 
+Ans: 
+#include <iostream>
+#include <stdio.h>
+using namespace std; 
+//Base Class - basicInfo
+class basicInfo { 
+protected:
+ char name[30]; 
+ int empId; 
+ char gender; 
+public:
+ void getBasicInfo(void) 
+ { 
+ cout << "Enter Name: "; 
+ cin.ignore(1); 
+ cin.getline(name, 30); 
+ cout << "Enter Emp. Id: "; 
+ cin >> empId; 
+ cout << "Enter Gender: "; 
+ cin >> gender; 
+ } 
+}; 
+//Base Class - deptInfo
+class deptInfo : private basicInfo { 
+protected:
+ char deptName[30]; 
+ char assignedWork[30]; 
+ int time2complete; 
+public:
+ void getDeptInfo(void) 
+ { 
+ getBasicInfo(); //to get basic info of an employee
+ cout << "Enter Department Name: "; 
+ cin.ignore(1); 
+ cin.getline(deptName, 30); 
+ cout << "Enter assigned work: "; 
+ fflush(stdin); 
+ cin.getline(assignedWork, 30); 
+ cout << "Enter time in hours to complete work: "; 
+ cin >> time2complete; 
+ } 
+ void printDeptInfo(void) 
+ { 
+ cout << "Employee's Information is: " << endl; 
+ cout << "Basic Information...:" << endl; 
+ cout << "Name: " << name << endl; //accessing protected 
+data
+ cout << "Employee ID: " << empId << endl; //accessing 
+protected data
+ cout << "Gender: " << gender << endl 
+ << endl; //accessing protected data
+ cout << "Department Information...:" << endl; 
+ cout << "Department Name: " << deptName << endl; 
+//accessing protected data
+ cout << "Assigned Work: " << assignedWork << endl; 
+//accessing protected data
+ cout << "Time to complete work: " << time2complete <<
+endl; //accessing protected data
+ } 
+}; 
+//another Base Class : loadInfo
+class loanInfo : private basicInfo { 
+protected:
+ char loanDetails[30]; 
+ int loanAmount; 
+public:
+ void getLoanInfo(void) 
+ { 
+ getBasicInfo(); //to get basic info of an employee
+ cout << "Enter Loan Details: "; 
+ cin.ignore(1); 
+ cin.getline(loanDetails, 30); 
+ cout << "Enter loan amount: "; 
+ cin >> loanAmount; 
+ } 
+ void printLoanInfo(void) 
+ { 
+ cout << "Employee's Information is: " << endl; 
+ cout << "Basic Information...:" << endl; 
+ cout << "Name: " << name << endl; //accessing protected 
+data
+ cout << "Employee ID: " << empId << endl; //accessing 
+protected data
+ cout << "Gender: " << gender << endl 
+ << endl; //accessing protected data
+ cout << "Loan Information...:" << endl; 
+ cout << "Loan Details: " << loanDetails << endl; 
+//accessing protected data
+ cout << "Loan Amount : " << loanAmount << endl; 
+//accessing protected data
+ } 
+}; 
+int main() 
+{ 
+ //read and print department information
+ deptInfo objD; 
+ objD.getDeptInfo(); 
+ objD.printDeptInfo(); 
+ cout << endl 
+ << endl; 
+ //read and print loan information
+ loanInfo objL; 
+ objL.getLoanInfo(); 
+ objL.printLoanInfo(); 
+ return 0; 
+} 
+Output
+Enter Name: Mickey 
+Enter Emp. Id: 1121 
+Enter Gender: F 
+Enter Department Name: Testing 
+Enter assigned work: To test login form 
+Enter time in hours to complete work: 20 
+Employee's Information is: 
+Basic Information...: 
+Name: Mickey 
+Employee ID: 1121 
+Gender: F 
+Department Information...: 
+Department Name: Testing 
+Assigned Work: To test login form 
+Time to complete work: 20 
+Enter Name: Mickey 
+Enter Emp. Id: 1121 
+Enter Gender: F 
+Enter Loan Details: HOME LOAN 
+Enter loan amount: 150000 
+Employee's Information is: 
+Basic Information...: 
+Name: Mickey 
+Employee ID: 1121 
+Gender: F 
+Loan Information...: 
+Loan Details: HOME LOAN 
+Loan Amount : 150000 
+Q2) Write a C++ Program to illustrates the use of 
+Constructors in multilevel inheritance. 
+Ans: 
+#include<iostream>
+using namespace std;
+ 
+// Base class
+class A
+{
+ public:
+ A()
+ {
+ cout << "Base class A constructor \n";
+ }
+};
+ 
+// Derived class B
+class B: public A
+{
+ public:
+ B()
+ {
+ cout << "Class B constructor \n";
+ }
+};
+ 
+// Derived class C
+class C: public B
+{
+ public:
+ C()
+ {
+ cout << "Class C constructor \n";
+ 
+ }
+};
+ 
+// Driver code
+int main()
+{
+ C obj;
+ return 0;
+}
+Output
+Base class A constructor 
+Class B constructor 
+Class C constructor 
+Q3) Write a C++ Program to Overriding member functions using 
+Inheritance.
+Ans: 
+#include <iostream>
+using namespace std; 
+class Base { 
+ public: 
+ void print() { 
+ cout << "Base Function" << endl; 
+ } 
+}; 
+class Derived : public Base { 
+ public: 
+ void print() { 
+ cout << "Derived Function" << endl; 
+ } 
+}; 
+int main() { 
+ Derived derived1; 
+ derived1.print(); 
+ return 0; 
+}
+Output
+Derived Function 
+Q4) Write a C++ Program to calculate the total mark of a student 
+using the concept of inheritance and virtual base class. 
+Ans: 
+#include<iostream.h>
+#include<conio.h>
+class student { 
+ int rno; 
+public: 
+ void getnumber() { 
+ cout << "Enter Roll No:"; 
+ cin>>rno; 
+ } 
+ void putnumber() { 
+ cout << "\n\n\tRoll No:" << rno << "\n"; 
+ } 
+}; 
+class test : virtual public student { 
+public: 
+ int part1, part2; 
+ void getmarks() { 
+ cout << "Enter Marks\n"; 
+ cout << "Part1:"; 
+ cin>>part1; 
+ cout << "Part2:"; 
+ cin>>part2; 
+ } 
+ void putmarks() { 
+ cout << "\tMarks Obtained\n"; 
+ cout << "\n\tPart1:" << part1; 
+ cout << "\n\tPart2:" << part2; 
+ } 
+}; 
+class sports : public virtual student { 
+public: 
+ int score; 
+ void getscore() { 
+ cout << "Enter Sports Score:"; 
+ cin>>score; 
+ } 
+ void putscore() { 
+ cout << "\n\tSports Score is:" << score; 
+ } 
+}; 
+class result : public test, public sports { 
+ int total; 
+public: 
+ void display() { 
+ total = part1 + part2 + score; 
+ putnumber(); 
+ putmarks(); 
+ putscore(); 
+ cout << "\n\tTotal Score:" << total; 
+ } 
+}; 
+void main() { 
+ result obj; 
+ clrscr(); 
+ obj.getnumber(); 
+ obj.getmarks(); 
+ obj.getscore(); 
+ obj.display(); 
+ getch(); 
+}
+Output
+Enter Roll No: 200
+Enter Marks 
+Part1: 90
+Part2: 80
+Enter Sports Score: 80
+Roll No: 200
+Marks Obtained 
+Part1: 90
+Part2: 80
+Sports Score is: 80
+Total Score is: 250
+Assignment 7 
+Q1) Write a C++ Program that illustrate single inheritance.
+Ans: 
+#include<iostream>
+using namespace std; 
+ 
+class Person
+{ 
+ int id; 
+ char name[100]; 
+ 
+ public:
+ void set_p() 
+ { 
+ cout<<"Enter the Id:"; 
+ cin>>id; 
+ fflush(stdin); 
+ cout<<"Enter the Name:"; 
+ cin.get(name,100); 
+ } 
+ 
+ void display_p() 
+ { 
+ cout<<endl<<id<<"\t"<<name<<"\t"; 
+ } 
+}; 
+ 
+class Student: private Person
+{ 
+ char course[50]; 
+ int fee; 
+ 
+ public:
+ void set_s() 
+ { 
+ set_p(); 
+ cout<<"Enter the Course Name:"; 
+ fflush(stdin); 
+ cin.getline(course,50); 
+ cout<<"Enter the Course Fee:"; 
+ cin>>fee; 
+ } 
+ 
+ void display_s() 
+ { 
+ display_p(); 
+ cout<<course<<"\t"<<fee<<endl; 
+ } 
+}; 
+ 
+main() 
+{ 
+ Student s; 
+ s.set_s(); 
+ s.display_s(); 
+ return 0; 
+} 
+Output
+Enter the Id:5466 
+Enter the Name:gyt 
+Enter the Course Name:juy 
+Enter the Course Fee:876 
+5466 gyt juy 876 
+Q2) Write a C++ Program that illustrate multipe inheritance.
+Ans: 
+#include<iostream>
+using namespace std;
+ 
+class A
+{
+public:
+ A() { cout << "A's constructor called" << endl; }
+};
+ 
+class B
+{
+public:
+ B() { cout << "B's constructor called" << endl; }
+};
+ 
+class C: public B, public A // Note the order
+{
+public:
+ C() { cout << "C's constructor called" << endl; }
+};
+ 
+int main()
+{
+ C c;
+ return 0;
+}
+Output
+B's constructor called 
+A's constructor called 
+C's constructor called 
+Q3) Write a C++ Program that illustrate multi level inheritance.
+Ans: 
+#include<iostream>
+using namespace std; 
+ 
+// Base class A
+class A
+{ 
+ public:
+ A() 
+ { 
+ int a = 5, b = 6, c; 
+ c = a + b; 
+ cout << "Sum is:" << 
+ c << endl; 
+ } 
+}; 
+ 
+// Class B
+class B: public A
+{ 
+ public:
+ B() 
+ { 
+ int d = 50,e = 35, f; 
+ f = d - e; 
+ cout << "Difference is:" <<
+ f << endl; 
+ } 
+}; 
+ 
+// Derived class C
+class C: public B
+{ 
+ public:
+ C() 
+ { 
+ int g = 10, h = 20, i; 
+ i = g * h; 
+ cout << "Product is:" <<
+ i << endl; 
+ } 
+}; 
+ 
+// Driver code
+int main() 
+{ 
+ C obj; 
+ return 0; 
+} 
+Output
+Sum is:11 
+Difference is:15 
+Product is:200 
+Q4) Write a C++ Program that illustrate Hierarchical inheritance.
+Ans: 
+// C++ program for Hierarchical Inheritance
+#include<iostream>
+using namespace std; 
+ 
+class A //superclass A
+{ 
+ public:
+ void show_A() { 
+ cout<<"class A"<<endl; 
+ } 
+}; 
+class B : public A //subclass B
+{ 
+ public:
+ void show_B() { 
+ cout<<"class B"<<endl; 
+ } 
+}; 
+ 
+class C : public A //subclass C
+{ 
+ public:
+ void show_C() { 
+ cout<<"class C"<<endl; 
+ } 
+}; 
+ 
+int main() { 
+ B b; // b is object of class B
+ cout<<"calling from B: "<<endl; 
+ b.show_B(); 
+ b.show_A(); 
+ 
+ C c; // c is object of class C
+ cout<<"calling from C: "<<endl; 
+ c.show_C(); 
+ c.show_A(); 
+ return 0; 
+} 
+Output
+calling from B: 
+class B 
+class A 
+calling from C: 
+class C 
+class A 
+Q5) Write a C++ program to show inheritance using different levels.
+Ans: 
+#include <iostream> 
+using namespace std; 
+ 
+// create a base class1 
+class Base_class 
+{ 
+ // access specifier 
+ public: 
+ // It is a member function 
+ void display() 
+ { 
+ cout << " It is the first function of the Base class " << endl; 
+ } 
+}; 
+ 
+// create a base class2 
+class Base_class2 
+{ 
+ // access specifier 
+ public: 
+ // It is a member function 
+ void display2() 
+ { 
+ cout << " It is the second function of the Base class " << endl; 
+ } 
+}; 
+ 
+/* create a child_class to inherit features of Base_class and Base_class2 with 
+access specifier. */ 
+class child_class: public Base_class, public Base_class2 
+{ 
+ 
+ // access specifier 
+ public: 
+ void display3() // It is a member function of derive class 
+ { 
+ cout << " It is the function of the derived class " << endl; 
+ } 
+ 
+}; 
+ 
+int main () 
+{ 
+ // create an object for derived class 
+ child_class ch; 
+ ch.display(); // call member function of Base_class1 
+ ch.display2(); // call member function of Base_class2 
+ ch.display3(); // call member function of child_class 
+} 
+Output
+It is the first function of the Base class 
+ It is the second function of the Base class 
+ It is the function of the derived class 
+Q6) Write a program in C++ which creates a multiple inheritance 
+hierarchy of Teacher classes derived from bot Person, Employee 
+classes. Each class must implement a Show() member function and 
+utilize scope resolution operator. 
+Ans: 
+#include<iostream>
+using namespace std; 
+//definition class Person
+class Person
+{ 
+char Name[20]; 
+int Age; 
+char Address[50]; 
+public:
+void getPersonData() 
+{ 
+cout<<"Enter Name: "; 
+cin>>Name; 
+cout<<"Enter Age: "; 
+cin>>Age; 
+cout<<"Enter Address: "; 
+cin>>Address; 
+} 
+void show() 
+{ 
+cout<<"Name: "<<Name<<endl; 
+cout<<"Age: "<<Age<<endl; 
+cout<<"Address: "<<Address<<endl; 
+} 
+}; 
+//definition of class Employee
+class Employee
+{ 
+int EmpID; 
+float Salary; 
+public:
+void getEmpData() 
+{ 
+cout<<"Enter Employee ID: "; 
+cin>>EmpID; 
+cout<<"Enter Salary: "; 
+cin>>Salary; 
+} 
+void show() 
+{ 
+cout<<"Employee ID: "<<EmpID<<endl; 
+cout<<"Enter Salary: "<<Salary<<endl; 
+} 
+}; 
+//definition of class Teacher inherited from class Person and Employee
+class Teacher:public Person,public Employee
+{ 
+char Subject[30]; 
+public:
+void getTeacherData() 
+{ 
+cout<<"Enter subject: "; 
+cin>>Subject; 
+} 
+void show() 
+{ 
+cout<<"Subject: "<<Subject<<endl; 
+} 
+}; 
+//definition of main function
+int main() 
+{ 
+Teacher T; 
+cout<<"Enter details of teacher:"<<endl; 
+T.getPersonData(); 
+T.getEmpData(); 
+T.getTeacherData(); 
+cout<<"\nDetails of teacher is:"<<endl; 
+//call show() function of Person class here we have to use scope resolution 
+operator because class Teacher also have show() function
+T.Person::show(); 
+//call show() function of Employee class here we have to use scope resolution 
+operator because class Teacher also have show() function
+T.Employee::show(); 
+//call show() function of Teacher class 
+T.show(); 
+return 0; 
+} 
+Output
+Enter details of teacher: 
+Enter Name: G 
+Enter Age: 6 
+Enter Address: YG 
+Enter Employee ID: 87 
+Enter Salary: 87 
+Enter subject: IUB 
+Details of teacher is: 
+Name: G 
+Age: 6 
+Address: YG 
+Employee ID: 87 
+Enter Salary: 87 
+Subject: IUB 
+Assignment 8 
+Q1) Write a C++ program to write and read object using read and 
+write function.
+Ans: 
+#include <iostream> 
+#include <fstream> 
+ 
+using namespace std;
+ 
+//class student to read and write student details
+class student 
+{
+ private:
+ char name[30];
+ int age;
+ public:
+ void getData(void)
+ { cout<<"Enter name:"; cin.getline(name,30);
+ cout<<"Enter age:"; cin>>age;
+ }
+ 
+ void showData(void)
+ {
+ cout<<"Name:"<<name<<",Age:"<<age<<endl;
+ }
+};
+ 
+int main() 
+{
+ student s;
+ 
+ ofstream file;
+ 
+ //open file in write mode
+ file.open("aaa.txt",ios::out);
+ if(!file)
+ {
+ cout<<"Error in creating file.."<<endl;
+ return 0;
+ }
+ cout<<"\nFile created successfully."<<endl;
+ 
+ //write into file
+ s.getData(); //read from user
+ file.write((char*)&s,sizeof(s)); //write into file
+ 
+ file.close(); //close the file
+ cout<<"\nFile saved and closed succesfully."<<endl;
+ 
+ //re open file in input mode and read data
+ //open file1
+ ifstream file1;
+ //again open file in read mode
+ file1.open("aaa.txt",ios::in);
+ if(!file1){
+ cout<<"Error in opening file..";
+ return 0;
+ }
+ //read data from file
+ file1.read((char*)&s,sizeof(s));
+ 
+ //display data on monitor
+ s.showData();
+ //close the file
+ file1.close();
+ 
+ return 0;
+}
+Output
+File created successfully. 
+Enter name:Mike 
+Enter age:21 
+File saved and closed succesfully. 
+Name:Mike,Age:21 
+Q2) Write a C++ program to demonstrate example of tellg() and 
+tellp() function.
+Ans: 
+#include <iostream> 
+#include <fstream> 
+ 
+using namespace std;
+ 
+int main() 
+{
+ fstream file;
+ //open file sample.txt in and Write mode
+ file.open("sample.txt",ios::out);
+ if(!file)
+ {
+ cout<<"Error in creating file!!!";
+ return 0;
+ }
+ //write A to Z
+ file<<"ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+ //print the position
+ cout<<"Current position is: "<<file.tellp()<<endl;
+ file.close();
+ 
+ //again open file in read mode
+ file.open("sample.txt",ios::in);
+ if(!file)
+ {
+ cout<<"Error in opening file!!!";
+ return 0;
+ }
+ cout<<"After opening file position is: "<<file.tellg()<<endl;
+ 
+ //read characters untill end of file is not found
+ char ch;
+ while(!file.eof())
+ {
+ cout<<"At position : "<<file.tellg(); //current 
+position
+ file>>ch; //read character from file
+ cout<<" Character \""<<ch<<"\""<<endl;
+ }
+ 
+ //close the file
+ file.close();
+ return 0;
+}
+Output
+At position : 0 Character "A" 
+ At position : 1 Character "B" 
+ At position : 2 Character "C" 
+ At position : 3 Character "D" 
+ At position : 4 Character "E" 
+ At position : 5 Character "F" 
+ At position : 6 Character "G" 
+ At position : 7 Character "H" 
+ At position : 8 Character "I" 
+ At position : 9 Character "J" 
+ At position : 10 Character "K" 
+ At position : 11 Character "L" 
+ At position : 12 Character "M" 
+ At position : 13 Character "N" 
+ At position : 14 Character "O" 
+ At position : 15 Character "P" 
+ At position : 16 Character "Q" 
+ At position : 17 Character "R" 
+ At position : 18 Character "S" 
+ At position : 19 Character "T" 
+ At position : 20 Character "U" 
+ At position : 21 Character "V" 
+ At position : 22 Character "W" 
+ At position : 23 Character "X" 
+ At position : 24 Character "Y" 
+ At position : 25 Character "Z" 
+Q3) Write a C++ Program for Username and Password Registration 
+System.
+Ans: 
+#include<iostream> 
+#include<fstream> 
+using namespace std; 
+struct mail 
+{ 
+ char un[50]; // user name 
+ char pd[50]; // passsword 
+ void reg(int); 
+} obj[5]; 
+void mail::reg(int k) 
+{ 
+ int i=k; 
+ cout<<"\nEnter user name :: "; 
+ cin>>un; 
+ cout<<"\nEnter password :: "; 
+ cin>>pd; 
+ ofstream filout; 
+ filout.open("C:\\Users\\acer\\Documents\\registration.txt",ios::app|ios::binary); 
+ if(!filout) 
+ { 
+ cout<<"\nCannot open file\n"; 
+ } 
+ else 
+ { 
+ cout<<"\n"; 
+ filout.write((char *)&obj[i],sizeof(mail)); 
+ filout.close(); 
+ } 
+ cout<<"\n...........You are now registered.......... \n\n"; 
+} // end of sign up or register func 
+int main() 
+{ 
+ int t; 
+ cout<<"\nEnter Registration Details for User 1 :: \n"; 
+ obj[0].reg(0); 
+ cout<<"\nEnter Registration Details for User 2 :: \n"; 
+ obj[1].reg(1); 
+ cout<<"\nEnter Registration Details for User 3 :: \n"; 
+ obj[2].reg(2); 
+ mail obj2; 
+ ifstream filein; 
+ filein.open("C:\\Users\\acer\\Documents\\registration.txt",ios::in|ios::binary); 
+ if(!filein) 
+ { 
+ cout<<"\nUnable to open file to read\n"; 
+ } 
+ else 
+ { 
+ cout<<"\nRegistered Details of All Users :: \n"; 
+ filein.read((char *)&obj2,sizeof(obj2)); 
+ while(filein) 
+ { 
+ cout<<"\nUsername :: "<<obj2.un<<"\nPasswword :: "<<obj2.pd<<"\n"; 
+ filein.read((char *)&obj2,sizeof(obj2)); 
+ } 
+ //filein.close(); 
+ } 
+ return 0; 
+} 
+Output
+Enter Registration Details for User 1 :: 
+Enter user name :: CodezClub 
+Enter password :: codezclub.com 
+...........You are now registered.......... 
+Enter Registration Details for User 2 :: 
+Enter user name :: John 
+Enter password :: Macene 
+...........You are now registered.......... 
+Enter Registration Details for User 3 :: 
+Enter user name :: Max 
+Enter password :: Payne 
+...........You are now registered.......... 
+Registered Details of All Users :: 
+Username :: CodezClub 
+Passwword :: codezclub.com 
+Username :: John 
+Passwword :: Macene 
+Username :: Max 
+Passwword :: Payne 
+Q4) Write a C++ Program to Maintain House Records using File 
+Handling.
+Ans: 
+#include<fstream> 
+#include<iostream> 
+#include<string.h> 
+#include<stdio.h> 
+using namespace std; 
+int opt; 
+class housing 
+{ 
+ int hno,income; 
+ char name[20],type[20]; 
+ public: 
+ void assign() 
+ { 
+ if(income<15000) 
+ strcpy(type,"LIG"); 
+ else if(income>=15000) 
+ strcpy(type,"MIG"); 
+ else if(income>=25000) 
+ strcpy(type,"HIG"); 
+ } 
+ void input() 
+ { 
+ cout<<"\n Enter House Number: "; 
+ cin>>hno; 
+ cout<<"\n House Name: "; 
+ cin>>name; 
+ cout<<"\n Annual Income: "; 
+ cin>>income; 
+ assign(); 
+ } 
+ void output() 
+ { 
+ cout<<"House Number: "<<hno<<"\n"<<"House Name: "<<name<<"\n"<<"Annual 
+Income: "<<income<<"\n"<<"Type: "<<type; 
+ } 
+ int retno() 
+ { 
+ return hno; 
+ } 
+}; 
+int main() 
+{ 
+ housing h,h1; 
+ fstream f; 
+ int hono; 
+ while(true) 
+ { 
+ cout<<"\n 1: Add Record"<<"\n 2: Modify Record"<<"\n 3: Display Records"<<"\n 4: 
+Exit\n"<<endl; 
+ cin>>opt; 
+ if(opt==1) 
+ { 
+ char ch='y'; 
+ 
+f.open("C:\\Users\\acer\\Documents\\file4.txt",ios::out|ios::binary|ios::app); 
+ while(ch=='y') 
+ { 
+ cout<<"\n Enter Details: "; 
+ h.input(); 
+ f.write((char*)&h,sizeof(h)); 
+ cout<<"\n Want to Enter More? y/n: "<<endl; 
+ cin>>ch; 
+ } 
+ f.close(); 
+ } 
+ if(opt==2) 
+ { 
+ cout<<"\n Enter House No of Record to be modified: "; 
+ cin>>hono; 
+ 
+f.open("C:\\Users\\acer\\Documents\\file4.txt",ios::in|ios::out|ios::binary|ios::ate); 
+ f.seekg(0); 
+ while(f.read((char*)&h,sizeof(h))) 
+ { 
+ if(h.retno()==hono) 
+ { 
+ cout<<"\n New Value: "; 
+ h1.input(); 
+ f.seekp(-sizeof(h),ios::cur); 
+ f.write((char*)&h1,sizeof(h1)); 
+ } 
+ } 
+ f.close(); 
+ } 
+ if(opt==3) 
+ { 
+ f.open("C:\\Users\\acer\\Documents\\file4.txt",ios::in|ios::binary); 
+ f.seekg(0); 
+ while(f.read((char*)&h,sizeof(h))) 
+ h.output(); 
+ f.close(); 
+ } 
+ if(opt==4) 
+ exit(0); 
+ cout<<"\nPress any key to continue...... "; 
+ } 
+ return 0; 
+} 
+Output
+1: Add Record 
+ 2: Modify Record 
+ 3: Display Records 
+ 4: Exit 
+1 
+ Enter Details: 
+ Enter House Number: 1 
+ House Name: abc 
+ Annual Income: 10000 
+ Want to Enter More? y/n: 
+y 
+ Enter Details: 
+ Enter House Number: 2 
+ House Name: xyz 
+ Annual Income: 20000 
+ Want to Enter More? y/n: 
+y 
+ Enter Details: 
+ Enter House Number: 3 
+ House Name: CodezClub 
+ Annual Income: 50000 
+ Want to Enter More? y/n: 
+n 
+Press any key to continue...... 
+ 1: Add Record 
+ 2: Modify Record 
+ 3: Display Records 
+ 4: Exit 
+3 
+House Number: 1 
+House Name: abc 
+Annual Income: 10000 
+Type: LIGHouse Number: 2 
+House Name: xyz 
+Annual Income: 20000 
+Type: MIGHouse Number: 3 
+House Name: CodezClub 
+Annual Income: 50000 
+Type: MIG 
+Press any key to continue...... 
+ 1: Add Record 
+ 2: Modify Record 
+ 3: Display Records 
+ 4: Exit 
+4 
